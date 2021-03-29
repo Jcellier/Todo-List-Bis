@@ -8,11 +8,17 @@
       href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700,900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="css/style.css" />
     <title>Toutou liste</title>
   </head>
   <body>
-    <h1 class="title">Peanuts the third</h1>
+    <h1 class="title">Peanuts the third wants you to :</h1>
 
     <div class="all-tasks">
       <h2 class="task-list-title">Mes listes</h2>
@@ -32,8 +38,8 @@
 
     <div class="todo-list" data-list-display-container>
       <div class="todo-header">
-        <h2 class="list-title" data-list-title>Maison</h2>
-        <p class="task-count" data-list-count>3 choses à faire</p>
+        <h2 class="list-title" data-list-title></h2>
+        <p class="task-count" data-list-count></p>
       </div>
       <div class="todo-body">
         <div class="tasks" data-tasks></div>
@@ -66,6 +72,9 @@
         <label>
           <span class="custom-checkbox"></span>
         </label>
+        <button class="trash-btn">
+          <i class="fas fa-trash"></i>
+        </button>
       </div>
     </template>
     <script defer src="./script.js"></script>

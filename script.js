@@ -33,7 +33,21 @@ tasksContainer.addEventListener("click", (e) => {
     const selectedTask = selectedList.tasks.find(
       (task) => task.id === e.target.id
     );
+    console.log(selectedTask);
     selectedTask.complete = e.target.checked;
+    save();
+    renderTaskCount(selectedList);
+  }
+  if (e.target.classList[0] === "trash-btn") {
+    const todo = e.target.parentElement;
+    const selectedList = lists.find((list) => list.id === selectedListId);
+    const selectedTask = selectedList.tasks.find(
+      (task) => task.id === e.target.id
+    );
+    console.log(selectedList);
+    console.log(selectedTask);
+    // // selectedTask = null;
+    // todo.remove();
     save();
     renderTaskCount(selectedList);
   }

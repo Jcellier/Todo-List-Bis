@@ -23,7 +23,8 @@ body {
   display: grid;
   grid:
     "header header header header" auto
-    "...... lists active ......" auto /
+    "...... lists lists ......" auto
+    "...... active active ......" auto /
     1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
 }
 
@@ -39,6 +40,8 @@ body {
 
 .all-tasks {
   grid-area: lists;
+  margin-bottom: 2rem;
+  margin-left: 0.5rem;
 }
 
 .task-list {
@@ -172,8 +175,10 @@ form {
 }
 
 .task {
+  display: flex;
   position: relative;
   margin-bottom: 1.25em;
+  justify-content: space-between;
 }
 
 .task::after {
@@ -240,6 +245,20 @@ form {
   position: absolute;
   width: 100%;
   left: 0;
-  bottom: -35px;
+  bottom: -70px;
   color: var(--clr-light);
+  padding: 2rem 0;
+}
+
+.fa-trash {
+  pointer-events: none;
+}
+
+.trash-btn {
+  background: var(--clr-dark);
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
 }
