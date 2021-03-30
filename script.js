@@ -36,19 +36,14 @@ tasksContainer.addEventListener("click", (e) => {
     console.log(selectedTask);
     selectedTask.complete = e.target.checked;
     save();
-    renderTaskCount(selectedList);
   }
   if (e.target.classList[0] === "trash-btn") {
     const todo = e.target.parentElement;
     const selectedList = lists.find((list) => list.id === selectedListId);
-    const selectedTask = selectedList.tasks.find(
-      (task) => task.id === e.target.id
+    selectedList.tasks = selectedList.tasks.filter(
+      (task) => task.id !== todo.children[0].id
     );
-    console.log(selectedList);
-    console.log(selectedTask);
-    // // selectedTask = null;
-    // todo.remove();
-    save();
+    saveAndRender();
     renderTaskCount(selectedList);
   }
 });

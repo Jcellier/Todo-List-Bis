@@ -106,7 +106,8 @@ form {
 }
 
 .new::placeholder {
-  opacity: 0.4;
+  opacity: 1;
+  color: grey;
 }
 
 .new:focus {
@@ -114,7 +115,7 @@ form {
 }
 
 .new:focus::placeholder {
-  opacity: 0.2;
+  opacity: 0.4;
 }
 
 .new.list {
