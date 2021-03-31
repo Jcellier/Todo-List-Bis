@@ -33,18 +33,44 @@ tasksContainer.addEventListener("click", (e) => {
     const selectedTask = selectedList.tasks.find(
       (task) => task.id === e.target.id
     );
-    console.log(selectedTask);
     selectedTask.complete = e.target.checked;
     save();
   }
   if (e.target.classList[0] === "trash-btn") {
-    const todo = e.target.parentElement;
+    const todo = e.target.parentElement.parentElement;
     const selectedList = lists.find((list) => list.id === selectedListId);
     selectedList.tasks = selectedList.tasks.filter(
       (task) => task.id !== todo.children[0].id
     );
     saveAndRender();
     renderTaskCount(selectedList);
+  }
+  if (e.target.classList[0] === "edit-btn") {
+    const todo = e.target.parentElement.parentElement;
+    const idElement = todo.children[0].id;
+    // const labelContent = document.querySelectorAll("for");
+    const labelContent = document.getElementById(idElement).nextElementSibling
+      .children[1];
+    labelContent.contentEditable = true;
+    labelContent.style.backgroundColor = "#dddbdb";
+    labelContent.focus();
+    console.log(labelContent.innerHTML);
+  }
+  if (e.target.classList[0] === "done-btn") {
+    const todo = e.target.parentElement.parentElement;
+    const idElement = todo.children[0].id;
+    const selectedList = lists.find((list) => list.id === selectedListId);
+    console.log(selectedList);
+    const labelContent = document.getElementById(idElement).nextElementSibling
+      .children[1];
+    labelContent.contentEditable = false;
+    labelContent.style.backgroundColor = "#f4f4f4";
+    const selectedTask = selectedList.tasks.find(
+      (task) => task.id === e.target.id
+    );
+    console.log(selectedTask);
+    selectedTask.name = labelContent.innerText;
+    saveAndRender();
   }
 });
 
@@ -131,7 +157,11 @@ function renderTasks(selectedList) {
     checkbox.checked = task.complete;
     const label = taskElement.querySelector("label");
     label.htmlFor = task.id;
-    label.append(task.name);
+    label.innerHTML =
+      "<span class='custom-checkbox'></span> <p>" + task.name + "<p>";
+    // label.append(task.name);
+    const doneBtn = taskElement.querySelector(".done-btn");
+    doneBtn.id = task.id;
     tasksContainer.appendChild(taskElement);
   });
 }
